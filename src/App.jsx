@@ -1,12 +1,12 @@
-import { useState } from 'react'
+import React from 'react'
 import './App.css'
+import EditorPage from './components/pages/EditorPage'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <h1 className="text-red-500">Hello world</h1>
+      <EditorPage />
     </>
   )
 }
