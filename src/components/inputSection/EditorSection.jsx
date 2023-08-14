@@ -9,7 +9,7 @@ const EditorSection = () => {
 
   return (
     <>
-      <div className="bg-white border rounded-md shadow-lg">
+      <div className="bg-white border rounded-md shadow-lg relative" id='editor-section'>
         <AceEditor
           mode="mysql"
           id="editor"
