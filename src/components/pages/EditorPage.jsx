@@ -1,5 +1,6 @@
 import React from 'react'
 import Sidebar from '../sidebar/Sidebar'
+import EditorSection from '../inputSection/EditorSection'
 
 const EditorPage = () => {
   return (
@@ -9,7 +10,17 @@ const EditorPage = () => {
           <div>
             <Sidebar />
           </div>
-          <div className="col-span-5 overflow-y-auto"></div>
+          <div className="col-span-5 overflow-y-auto p-6">
+            <div className="flex flex-col gap-6">
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <EditorSection />
+                </div>
+                <div>quicklinks</div>
+              </div>
+              <div>output</div>
+            </div>
+          </div>
         </div>
       </div>
     </>

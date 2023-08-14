@@ -7,7 +7,7 @@ const Sidebar = () => {
     <>
       <div className="w-full h-screen bg-white border-r shadow-r-md flex flex-col justify-between">
         <div>
-          <div className="px-3 py-4 mb-4">
+          <div className="px-3 py-4">
             <button type="button" className='border-2 border-primary text-primary font-medium hover:bg-primary-fade py-2 w-full rounded-md'>New Thread</button>
           </div>
           <div className="cursor-pointer hover:bg-light px-3 py-2">
