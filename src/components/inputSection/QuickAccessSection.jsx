@@ -8,10 +8,10 @@ const QuickAccessSection = () => {
 
   return (
     <>
-      <div className="bg-white border rounded-md shadow-lg h-0 min-h-full" id='quick-access-section'>
+      <div className="section-card h-0 min-h-full" id='quick-access-section'>
         <div className="grid grid-cols-2">
-          <button type='button' onClick={() => setActivePane("history")} className={"cursor-pointer hover:bg-primary-fade font-medium rounded-tl-md text-center py-2" + (activePane === "history" ? " border-b-2 border-primary text-primary" : " border-b border-slate-300")}>Query History</button>
-          <button type='button' onClick={() => setActivePane("favourites")} className={"cursor-pointer hover:bg-primary-fade font-medium rounded-tr-md text-center py-2" + (activePane === "favourites" ? " border-b-2 border-primary text-primary" : " border-b border-slate-300")}>Favourites</button>
+          <button type='button' onClick={() => setActivePane("history")} className={"rounded-tl-md" + (activePane === "history" ? " active-pane" : " inactive-pane")}>Query History</button>
+          <button type='button' onClick={() => setActivePane("favourites")} className={"rounded-tr-md" + (activePane === "favourites" ? " active-pane" : " inactive-pane")}>Favourites</button>
         </div>
         <div className='overflow-y-auto p-4' style={{ height: "calc(100% - 56px)" }}>
           <div className="flex gap-4 items-center border-b">
