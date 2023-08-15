@@ -19,7 +19,7 @@
   background-color: white;
 }
 .section-card *::-webkit-scrollbar-thumb{
-  background: #E2E2E2;
+  background: #D2D2D2;
   border-radius: 10px;
 }
 .section-card *::-webkit-scrollbar-thumb:hover{

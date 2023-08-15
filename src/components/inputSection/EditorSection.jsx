@@ -1,11 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AceEditor from "react-ace";
 import "ace-builds/src-min-noconflict/mode-mysql";
 import "ace-builds/src-noconflict/theme-sqlserver";
 import "ace-builds/src-min-noconflict/ext-language_tools";
 
-const EditorSection = () => {
-  const [editorValue, setEditorValue] = useState("")
+const EditorSection = ({ editorQuery, runQuery }) => {
+  const [editorValue, setEditorValue] = useState(editorQuery)
+
+  // set value of local state variable when props change
+  useEffect(() => {
+    setEditorValue(editorQuery)
+  }, [editorQuery])
+
+  const handleClearEditor = () => {
+    setEditorValue("")
+  }
+
+  const handleSubmitQuery = () => {
+    runQuery(editorValue)
+  }
 
   return (
     <>
@@ -33,8 +46,8 @@ const EditorSection = () => {
           onChange={(value) => setEditorValue(value)}
         />
         <div className="flex justify-end gap-4 p-4">
-          <button type="button" className='hover:bg-light text-gray-500 font-medium px-4 py-2 rounded-md'>Clear</button>
-          <button type="button" className='hover:bg-primary text-primary hover:text-white border-2 border-primary font-medium px-4 py-2 rounded-md'>Run Query</button>
+          <button type="button" onClick={handleClearEditor} className='hover:bg-light text-gray-500 font-medium px-4 py-2 rounded-md'>Clear</button>
+          <button type="button" onClick={handleSubmitQuery} className='hover:bg-primary text-primary hover:text-white border-2 border-primary font-medium px-4 py-2 rounded-md'>Run Query</button>
         </div>
       </div>
     </>
