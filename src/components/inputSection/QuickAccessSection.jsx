@@ -20,13 +20,13 @@ const QuickAccessSection = ({ populateQuery, queryHistory }) => {
               queryHistory.length > 0 ? (
                 queryHistory.map((query, index) => <SavedQuery key={index} populateQuery={populateQuery} queryText={query} isFavourite={favourites.includes(query)} />)
               ) : (
-                <i className='text-gray-500'>No queries run in this thread</i>
+                <p className='text-gray-500 text-center italic'>No queries run in this thread</p>
               )
             ) : (
               favourites.length > 0 ? (
                 favourites.map((query, index) => <SavedQuery key={index} populateQuery={populateQuery} queryText={query} isFavourite={true} />)
               ) : (
-                <i className='text-gray-500'>No queries saved as Favourites</i>
+                <p className='text-gray-500 text-center italic'>No queries saved as Favourites</p>
               )
             )
           }

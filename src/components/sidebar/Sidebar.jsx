@@ -13,11 +13,15 @@ const Sidebar = ({ threads, activeThreadId, handleThreadChange }) => {
             <button type="button" className='border-2 border-primary text-primary font-medium hover:bg-primary-fade py-2 w-full rounded-md'>New Thread</button>
           </div>
           {
-            threads.map(thread => (
-              <div onClick={() => handleThreadChange(thread.id)} className={"cursor-pointer px-3 py-2 " + (thread.id === activeThreadId ? "bg-light text-primary font-medium border-r-[3px] border-primary" : "hover:bg-light")}>
-                <p className="line-clamp-1">{thread.name}</p>
-              </div>
-            ))
+            threads.length > 0 ? (
+              threads.map(thread => (
+                <div key={thread.id} onClick={() => handleThreadChange(thread.id)} className={"cursor-pointer px-3 py-2 " + (thread.id === activeThreadId ? "bg-light text-primary font-medium border-r-[3px] border-primary" : "hover:bg-light")}>
+                  <p className="line-clamp-1">{thread.name}</p>
+                </div>
+              ))
+            ) : (
+              <p className="text-gray-500 text-center italic px-3">No threads present. Please create a new thread</p>
+            )
           }
         </div>
         <div className="border-t-2 border-slate-200 p-4 flex justify-between items-center">

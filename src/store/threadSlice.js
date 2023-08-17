@@ -26,7 +26,7 @@ const threadSlice = createSlice({
   reducers: {
     addQueryToHistory: (state, action) => {
       const threadIndex = state.threads.findIndex(thread => thread.id === action.payload.threadId)
-      state.threads[threadIndex].history.push(action.payload.query)
+      state.threads[threadIndex].history.unshift(action.payload.query)
     },
     addThread: (state, action) => {
       state.threads.push({
