@@ -46,7 +46,7 @@ const EditorSection = ({ editorQuery, runQuery }) => {
           onChange={(value) => setEditorValue(value)}
         />
         <div className="flex justify-end gap-4 p-4">
-          <button type="button" onClick={handleClearEditor} className='hover:bg-light text-gray-500 font-medium px-4 py-2 rounded-md'>Clear</button>
+          <button type="button" onClick={handleClearEditor} className='btn-secondary'>Clear</button>
           <button type="button" onClick={handleSubmitQuery} className='hover:bg-primary text-primary hover:text-white border-2 border-primary font-medium px-4 py-2 rounded-md'>Run Query</button>
         </div>
       </div>

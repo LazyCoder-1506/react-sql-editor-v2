@@ -24,7 +24,7 @@ const OutputTable = ({ data }) => {
         }}
         renderTopToolbarCustomActions={() => (
           <CSVLink data={data} filename={'output.csv'}>
-            <button type='button' className='hover:bg-primary-fade text-primary text-sm border border-primary font-medium px-4 py-2 rounded-md'>Export Data</button>
+            <button type='button' className='btn-outline text-sm border px-4'>Export Data</button>
           </CSVLink>
         )}
       />

@@ -35,9 +35,6 @@ const threadSlice = createSlice({
         history: []
       })
     },
-    removeThread: (state, action) => {
-      state.threads = state.threads.filter(thread => thread.id != action.payload)
-    },
   }
 })
 

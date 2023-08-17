@@ -13,4 +13,12 @@
   .inactive-pane {
     @apply cursor-pointer hover:bg-primary-fade font-medium text-center py-2 border-b border-slate-300
   }
+
+  .btn-outline {
+    @apply border-primary text-primary font-medium hover:bg-primary-fade py-2 rounded-md
+  }
+  
+  .btn-secondary {
+    @apply hover:bg-light text-gray-500 font-medium px-4 py-2 rounded-md
+  }
 }
