@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import './App.css'
-import EditorPage from './components/pages/EditorPage'
+const EditorPage = lazy(() => import('./components/pages/EditorPage'))
 
 function App() {
 
   return (
     <>
+      <Suspense fallback={<div>loading</div>}>
       <EditorPage />
+      </Suspense>
     </>
   )
 }

@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import Sidebar from '../sidebar/Sidebar'
-import EditorSection from '../inputSection/EditorSection'
-import QuickAccessSection from '../inputSection/QuickAccessSection'
-import OutputSection from '../outputSection/OutputSection'
+import React, { Suspense, lazy, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getHistorydByThreadId } from '../../utils/thread'
-import { addQueryToHistory } from '../../store/threadSlice'
+
+import Sidebar from '../sidebar/Sidebar'
 import Notification from '../Notification'
+// import EditorSection from '../inputSection/EditorSection'
+const EditorSection = lazy(() => import('../inputSection/EditorSection'))
+// import QuickAccessSection from '../inputSection/QuickAccessSection'
+const QuickAccessSection = lazy(() => import('../inputSection/QuickAccessSection'))
+// import OutputSection from '../outputSection/OutputSection'
+const OutputSection = lazy(() => import('../outputSection/OutputSection'))
+
+import { addQueryToHistory } from '../../store/threadSlice'
 import { showNotification } from '../../store/notificationSlice'
+
+import { getHistorydByThreadId } from '../../utils/thread'
 
 const EditorPage = () => {
   const [editorQuery, setEditorQuery] = useState("")
@@ -52,11 +58,15 @@ const EditorPage = () => {
               activeThreadId !== -1 ? (
                 <div className="flex flex-col gap-6">
                   <div className="grid grid-cols-2 gap-6">
-                    <EditorSection editorQuery={editorQuery} runQuery={runQuery} />
-                    <QuickAccessSection populateQuery={populateQuery} queryHistory={getHistorydByThreadId(activeThreadId, threads)} />
+                    <Suspense fallback={<div></div>}>
+                      <EditorSection editorQuery={editorQuery} runQuery={runQuery} />
+                      <QuickAccessSection populateQuery={populateQuery} queryHistory={getHistorydByThreadId(activeThreadId, threads)} />
+                    </Suspense>
                   </div>
                   <div>
-                    <OutputSection submittedQuery={submittedQuery} />
+                    <Suspense fallback={<div></div>}>
+                      <OutputSection submittedQuery={submittedQuery} />
+                    </Suspense>
                   </div>
                 </div>
               ) : (
