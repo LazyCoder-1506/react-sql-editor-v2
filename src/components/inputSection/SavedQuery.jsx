@@ -4,16 +4,19 @@ import { IconButton } from '@mui/material'
 import Tooltip from '@mui/material/Tooltip';
 import { useDispatch } from 'react-redux';
 import { addFavourite, removeFavourite } from '../../store/favouriteSlice';
+import {  showNotification } from '../../store/notificationSlice';
 
 const SavedQuery = ({ populateQuery, queryText, isFavourite }) => {
   const dispatch = useDispatch()
 
   const handleAddToFavourites = (query) => {
     dispatch(addFavourite(query))
+    dispatch(showNotification("Query added to Favourites"))
   }
 
   const handleRemoveFromFavourites = (query) => {
     dispatch(removeFavourite(query))
+    dispatch(showNotification("Query removed to Favourites"))
   }
 
   return (

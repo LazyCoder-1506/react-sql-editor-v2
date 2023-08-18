@@ -6,6 +6,8 @@ import OutputSection from '../outputSection/OutputSection'
 import { useDispatch, useSelector } from 'react-redux'
 import { getHistorydByThreadId } from '../../utils/thread'
 import { addQueryToHistory } from '../../store/threadSlice'
+import Notification from '../Notification'
+import { showNotification } from '../../store/notificationSlice'
 
 const EditorPage = () => {
   const [editorQuery, setEditorQuery] = useState("")
@@ -22,6 +24,7 @@ const EditorPage = () => {
   const runQuery = (submittedQuery) => {
     setEditorQuery(submittedQuery)
     setSubmittedQuery(submittedQuery)
+    dispatch(showNotification("Query submitted"))
   }
 
   useEffect(() => {
@@ -60,6 +63,8 @@ const EditorPage = () => {
           </div>
         </div>
       </div>
+
+      <Notification />
     </>
   )
 }

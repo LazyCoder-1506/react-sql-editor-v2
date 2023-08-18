@@ -3,9 +3,13 @@ import AceEditor from "react-ace";
 import "ace-builds/src-min-noconflict/mode-mysql";
 import "ace-builds/src-noconflict/theme-sqlserver";
 import "ace-builds/src-min-noconflict/ext-language_tools";
+import { useDispatch } from 'react-redux';
+import { showNotification } from '../../store/notificationSlice';
 
 const EditorSection = ({ editorQuery, runQuery }) => {
   const [editorValue, setEditorValue] = useState(editorQuery)
+
+  const dispatch = useDispatch()
 
   // set value of local state variable when props change
   useEffect(() => {
@@ -17,6 +21,10 @@ const EditorSection = ({ editorQuery, runQuery }) => {
   }
 
   const handleSubmitQuery = () => {
+    if (editorValue.trim().length === 0) {
+      dispatch(showNotification("Query is empty"))
+      return
+    }
     runQuery(editorValue)
   }
 

@@ -1,15 +1,26 @@
 import { Logout } from '@mui/icons-material'
 import { IconButton, Modal } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addThread } from '../../store/threadSlice'
+import { showNotification } from '../../store/notificationSlice'
 
 const Sidebar = ({ threads, activeThreadId, handleThreadChange }) => {
   const [modalOpen, setModalOpen] = useState(false)
   const [threadNameInput, setThreadNameInput] = useState("")
+  const [error, setError] = useState(false)
 
   const handleModalOpen = () => setModalOpen(true)
   const handleModalClose = () => setModalOpen(false)
+
+  const handleInputChange = (value) => {
+    setThreadNameInput(value)
+    setError(false)
+  }
+
+  useEffect(() => {
+    setError(false)
+  }, [modalOpen])
 
   const dispatch = useDispatch()
 
@@ -24,6 +35,9 @@ const Sidebar = ({ threads, activeThreadId, handleThreadChange }) => {
       setModalOpen(false)
       setThreadNameInput("")
       handleThreadChange(newThreadId)
+      dispatch(showNotification("New thread added"))
+    } else {
+      setError(true)
     }
   }
 
@@ -61,12 +75,13 @@ const Sidebar = ({ threads, activeThreadId, handleThreadChange }) => {
             type="text"
             name="threadNameInput"
             id="threadNameInput"
-            className='mb-6 px-3 py-2 rounded-md border-2 focus:border-primary w-full'
+            className='px-3 py-2 rounded-md border-2 focus:border-primary w-full'
             placeholder='Thread Name'
             value={threadNameInput}
-            onChange={(e) => setThreadNameInput(e.target.value)}
+            onChange={(e) => handleInputChange(e.target.value)}
           />
-          <div className="flex justify-between">
+          <span className={"text-red-500 text-sm mt-2" + (error ? "" : " hidden")}>Thread name cannot be empty.</span>
+          <div className="flex justify-between mt-6">
             <button type="button" onClick={handleCreateNewThread} className='btn-outline border-2 px-4'>Add</button>
             <button type="button" onClick={handleModalClose} className='btn-secondary'>Cancel</button>
           </div>
