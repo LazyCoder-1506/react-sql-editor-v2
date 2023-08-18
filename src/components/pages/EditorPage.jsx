@@ -3,11 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import Sidebar from '../sidebar/Sidebar'
 import Notification from '../Notification'
-// import EditorSection from '../inputSection/EditorSection'
 const EditorSection = lazy(() => import('../inputSection/EditorSection'))
-// import QuickAccessSection from '../inputSection/QuickAccessSection'
 const QuickAccessSection = lazy(() => import('../inputSection/QuickAccessSection'))
-// import OutputSection from '../outputSection/OutputSection'
 const OutputSection = lazy(() => import('../outputSection/OutputSection'))
 
 import { addQueryToHistory } from '../../store/threadSlice'
