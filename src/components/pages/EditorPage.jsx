@@ -28,8 +28,13 @@ const EditorPage = () => {
   }
 
   useEffect(() => {
-    if (activeThreadId !== -1) dispatch(addQueryToHistory({ threadId: activeThreadId, query: submittedQuery }))
+    if (activeThreadId !== -1 && submittedQuery.trim().length > 0) dispatch(addQueryToHistory({ threadId: activeThreadId, query: submittedQuery }))
   }, [submittedQuery])
+
+  useEffect(() => {
+    setEditorQuery("")
+    setSubmittedQuery("")
+  }, [activeThreadId])
 
   const populateQuery = (query) => {
     setEditorQuery(query)
@@ -51,7 +56,7 @@ const EditorPage = () => {
                     <QuickAccessSection populateQuery={populateQuery} queryHistory={getHistorydByThreadId(activeThreadId, threads)} />
                   </div>
                   <div>
-                    <OutputSection />
+                    <OutputSection submittedQuery={submittedQuery} />
                   </div>
                 </div>
               ) : (
