@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addThread } from '../../store/threadSlice'
 import { showNotification } from '../../store/notificationSlice'
+import { Link } from 'react-router-dom'
 
 const Sidebar = ({ threads, activeThreadId, handleThreadChange }) => {
   const [modalOpen, setModalOpen] = useState(false)
@@ -62,9 +63,11 @@ const Sidebar = ({ threads, activeThreadId, handleThreadChange }) => {
         </div>
         <div className="border-t-2 border-slate-200 p-4 flex justify-between items-center">
           <span className="font-bold text-lg text-gray-500 mb-2 text-center">John Doe</span>
-          <button type='button' className='btn-secondary'>
-            <Logout />
-          </button>
+          <Link to="/">
+            <button type='button' className='btn-secondary'>
+              <Logout />
+            </button>
+          </Link>
         </div>
       </div>
 
