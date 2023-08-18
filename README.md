@@ -62,10 +62,11 @@ Since this version has many features and dependencies, performance is not as goo
 ## Optimisation Attempts
 
 - Used vercel for hosting leverage its Vercel Edge Network compression that results in the better performance.
-- Lazy loaded all most components to prevent unresponsive or blank screen when components are being imported
+- Lazy loaded almost all components to prevent unresponsive or blank screen when components are being imported
 - separated the components and added the data fetching responsibilities in lazy loaded component
 
 ## Features that would be helpful in real world scenario but not implementing now
 
 - Persisting threads, history and favourites in localStorage
 - Adding rename and delete functionality to threads
+- Adding charts using Highchart.js to Insights tab
